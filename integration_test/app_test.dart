@@ -4,7 +4,8 @@ import 'package:integration_test/integration_test.dart';
 import 'package:flutter_example/main.dart' as app;
 
 void main() {
-  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized()
+      as IntegrationTestWidgetsFlutterBinding;
 
   group('end-to-end test', () {
     testWidgets('tap on the floating action button, verify counter',
@@ -26,6 +27,11 @@ void main() {
 
       // Verify the counter increments by 1.
       expect(find.text('1'), findsOneWidget);
+
+      await tester.pumpAndSettle();
+      await binding.convertFlutterSurfaceToImage();
+      await tester.pumpAndSettle();
+      await binding.takeScreenshot('after_increment.png');
     });
   });
 }
