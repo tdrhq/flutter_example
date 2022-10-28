@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
 import 'package:flutter_example/main.dart' as app;
+import 'package:flutter_example/screenshotbot.dart' as screenshotbot;
 
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized()
@@ -31,7 +32,7 @@ void main() {
       await tester.pumpAndSettle();
       await binding.convertFlutterSurfaceToImage();
       await tester.pumpAndSettle();
-      await binding.takeScreenshot('after_increment.png');
+      screenshotbot.snap("after_increment");
     });
   });
 }
