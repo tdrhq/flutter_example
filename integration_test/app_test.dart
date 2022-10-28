@@ -30,8 +30,6 @@ void main() {
       expect(find.text('1'), findsOneWidget);
 
       await tester.pumpAndSettle();
-      await binding.convertFlutterSurfaceToImage();
-      await tester.pumpAndSettle();
       screenshotbot.snap("after_increment");
     });
   });
